@@ -18,7 +18,7 @@
 
 ## 关于渠道号
 在 JS 接口中，调用 init 方法的时候需要传入 App_Key 和 渠道号。 如果 iOS 不填写默认为 App Store。如果 Android 不填写,会读取 AndroidManifest application 节点中的值
-```<meta-data android:name="UMENG_CHANNEL" android:value="${CHANEL_NAME}"/>```,如果都没有填写，默认渠道号为 "defualt"。
+```<meta-data android:name="UMENG_CHANNEL" android:value="${CHANEL_NAME}"/>```,如果都没有填写，默认渠道号为 "default"。
 
 ## 使用
 ```js
