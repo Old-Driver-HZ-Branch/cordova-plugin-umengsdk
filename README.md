@@ -25,5 +25,5 @@
 MobclickAgent.init('xxxxxxxxx');
 MobclickAgent.onEvent(9527);
 ```
-详细的 API 使用请参考 wwww 文件夹中的 Umeng.js 有里面有每个方法的使用说明
+详细的 API 使用请参考 www 文件夹中的 Umeng.js 里面有每个方法的使用说明
 
