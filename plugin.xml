@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-umengsdk"
+        version="1.0.0">
+    
+    <name>Umeng</name>
+    <js-module src="www/Umeng.js" name="Umeng">
+        <clobbers target="MobclickAgent" />
+    </js-module>
+        <!-- ios -->
+    <platform name="ios">
+        <header-file src="src/ios/UMPlugin.h" />
+        <source-file src="src/ios/UMPlugin.m" />
+        <config-file target="config.xml" parent="/widget/plugins">
+            <feature name="Umeng">
+                <param name="ios-package" value="UMPlugin"/>
+            </feature>
+        </config-file>
+
+  <!--       <framework src="src/ios/UMMobClick.framework" custom="true" /> -->
+        <source-file src="src/ios/UMMobClick.framework/Versions/A/UMMobClick" framework="true" />
+		<header-file src="src/ios/UMMobClick.framework/Versions/A/Headers/MobClick.h" />
+		<header-file src="src/ios/UMMobClick.framework/Versions/A/Headers/MobClickGameAnalytics.h" />
+		<header-file src="src/ios/UMMobClick.framework/Versions/A/Headers/MobClickSocialAnalytics.h" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="libsqlite3.tbd"/>
+        <framework src="libz.tbd"/>
+    </platform>
+    <!-- android -->
+    <platform name="android">
+        <source-file src="src/android/umeng-analytics-v6.1.0.jar" target-dir="libs" />
+        <source-file src="src/android/UMPlugin.java" target-dir="src/com/umeng/plugin" />
+        <config-file target="res/xml/config.xml" parent="/widget/plugins">
+            <feature name="Umeng">
+                <param name="android-package" value="com.umeng.plugin.UMPlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml"  parent="application">
+        </config-file>        
+        <config-file target="AndroidManifest.xml"  parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+    </platform>
+</plugin>

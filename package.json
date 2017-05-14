@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-umengsdk",
+  "version": "1.0.0",
+  "description": "codrova/phonegap wrapper for Umeng sdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Old-Driver-HZ-Branch/cordova-plugin-umengsdk.git"
+  },
+  "cordova": {
+    "id": "cordova-plugin-umengsdk",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova",
+    "phonegap",
+    "plugin",
+    "umengsdk",
+    "umeng"
+  ],
+  "author": "https://github.com/iVanPan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Old-Driver-HZ-Branch/cordova-plugin-umengsdk/issues"
+  },
+  "homepage": "https://github.com/Old-Driver-HZ-Branch/cordova-plugin-umengsdk"
+}
