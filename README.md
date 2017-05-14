@@ -4,7 +4,7 @@
 
 
 ## 安装要求
-- Cordova Version 3.5+
+- Cordova Version 5.0+
 - Cordova-Android >= 4.0
 - Cordova-iOS >= 4.0			
 
@@ -17,6 +17,13 @@
 由于友盟 iOS SDK 在 framework 中使用了替身，Cordova 在安装完插件以后会出现 ‘UMMobClick/MobClick.h’ file not found 问题，因此本插件采用了直接拷贝 framework 中二进制文件和头文件的方式。如果不想采用这种方式，可以通过修改 Plugin.xml  和 UMPlugin.m 中的头文件，在安装完插件以后需要重新替换一遍 UMMobClick.framework。
 
 ## 关于渠道号
-在 JS 接口中，调用 init 方法的时候需要传入 App_Key 和 渠道号。 如果 iOS 不填写默认为 App Store。如果 Android 不填写,会读取 AndroidManifest 中的值
-```<meta-data android:name="UMENG_CHANNEL" android:value="${CHANEL_NAME}"></meta-data>```,如果都没有填写，默认渠道号为 "defualt"。
+在 JS 接口中，调用 init 方法的时候需要传入 App_Key 和 渠道号。 如果 iOS 不填写默认为 App Store。如果 Android 不填写,会读取 AndroidManifest application 节点中的值
+```<meta-data android:name="UMENG_CHANNEL" android:value="${CHANEL_NAME}"/>```,如果都没有填写，默认渠道号为 "defualt"。
+
+## 使用
+```js
+MobclickAgent.init('xxxxxxxxx');
+MobclickAgent.onEvent(9527);
+```
+详细的 API 使用请参考 wwww 文件夹中的 Umeng.js 有里面有每个方法的使用说明
 
