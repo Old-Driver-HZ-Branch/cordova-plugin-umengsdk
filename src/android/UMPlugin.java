@@ -2,6 +2,7 @@ package com.umeng.plugin;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -67,9 +68,11 @@ public class UMPlugin extends CordovaPlugin {
         if (action.equals("init")) {
             String appKey = args.getString(0);
             String channelId = args.getString(1);
-            if(channelId == null) {
+            if(channelId == "null") {
                 channelId = getChannelId();
             }
+            Log.d("UMPlugin", "APPKEY is:" + appKey);
+            Log.d("UMPlugin", "channelId is:" + channelId);
             MobclickAgent.startWithConfigure(new UMAnalyticsConfig(mContext, appKey, channelId));
             MobclickAgent.setScenarioType(mContext, EScenarioType.E_UM_NORMAL);
             MobclickAgent.onResume(mContext);
@@ -265,18 +268,22 @@ public class UMPlugin extends CordovaPlugin {
     }
 
     private String getChannelId() {
+        String key = "default";
+        Bundle metaData = null;
         try {
             ApplicationInfo appInfo = cordova.getActivity().getApplicationContext().getPackageManager()
                 .getApplicationInfo(cordova.getActivity().getApplicationContext().getPackageName(),
                     PackageManager.GET_META_DATA);
-            String key = appInfo.metaData.get("UMENG_CHANNEL").toString();
-            if(key == null) {
-                key = "default";
+            if (appInfo != null) {
+                metaData = appInfo.metaData;
+            }
+            if (metaData != null && metaData.get("UMENG_CHANNEL") != null) {
+                key = metaData.get("UMENG_CHANNEL").toString();
             }
             return key;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return "default";
+        return key;
     }
 }
